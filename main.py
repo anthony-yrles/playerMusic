@@ -9,11 +9,11 @@ root.title('Music player')
 
 original_image = Image.open("./images/bcg_image.jpg")
 resized_image = original_image.resize((400, 400))
-background_photo = ImageTk.PhotoImage(resized_image)
+original_image = ImageTk.PhotoImage(resized_image)
 
 canvas = Canvas(root, width=resized_image.width, height=resized_image.height)
 canvas.pack(fill="both", expand=True)
-canvas.create_image(0, 0, anchor="nw", image=background_photo)
+canvas.create_image(0, 0, anchor="nw", image=original_image)
 
 title = Label(text="Let the music play !!!", fg="black", bg=root.cget('bg'))
 canvas.create_window(150, 50, anchor="nw", window=title)
