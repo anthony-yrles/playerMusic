@@ -1,4 +1,5 @@
 from tkinter import *
+from mixerFunct import *
 from PIL import Image, ImageTk
 
 # Variables globales pour les images
@@ -15,7 +16,6 @@ def newSongWindow(song, root):
     song_window.title(song)
 
     songBcg = Image.open('./images/song_bcg.png')
-    print("Image created successfully")
     songBcgResize = songBcg.resize((400, 400))
     songBcg = ImageTk.PhotoImage(songBcgResize)
 
@@ -44,16 +44,16 @@ def newSongWindow(song, root):
         upImage = upImage.resize((30, 30))
         upImage = ImageTk.PhotoImage(upImage)
 
-    playBtn = Button(song_window, image=playImage)
+    playBtn = Button(song_window, image=playImage, command=playSong())
     canvas.create_window(20, 350, anchor="nw", window=playBtn)
 
-    pauseBtn = Button(song_window, image=pauseImage)
+    pauseBtn = Button(song_window, image=pauseImage, command=pauseSong())
     canvas.create_window(120, 350, anchor="nw", window=pauseBtn)
 
-    volumeDownBtn = Button(song_window, image=downImage)
+    volumeDownBtn = Button(song_window, image=downImage, command=volumeUp())
     canvas.create_window(220, 350, anchor="nw", window=volumeDownBtn)
 
-    volumeUpBtn = Button(song_window, image=upImage)
+    volumeUpBtn = Button(song_window, image=upImage, command=volumeUp())
     canvas.create_window(320, 350, anchor="nw", window=volumeUpBtn)
 
 
@@ -62,9 +62,6 @@ def newSongWindow(song, root):
 
     # stopBtn = Button(song_window, image=stopImage)
     # canvas.create_window(80, 350, anchor="nw", window=stopBtn)
-
-    # resumeBtn = Button(song_window, image="./images/pause.png")
-    # canvas.create_window(320, 350, anchor="nw", window=resumeBtn)
 
     # songLoopBtn = Button(song_window, image="./images/pause.png")
     # canvas.create_window(270, 370, anchor="nw", window=songLoopBtn)

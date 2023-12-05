@@ -1,8 +1,10 @@
 from pygame import mixer
 from tkinter import *
-from PIL import Image, ImageTk
 from songWindow import *
-import os
+from connect import *
+from testNewMember import *
+from burger import *
+from PIL import Image, ImageTk
 
 root = Tk()
 root.title('Music player')
@@ -15,6 +17,13 @@ canvas = Canvas(root, width=resized_image.width, height=resized_image.height)
 canvas.pack(fill="both", expand=True)
 canvas.create_image(0, 0, anchor="nw", image=original_image)
 
+signInImage = Image.open("./images/signIn.png")
+ResizedSignIn = signInImage.resize((30, 30))
+signInImage = ImageTk.PhotoImage(ResizedSignIn)
+
+signInBtn = Button(root, image=signInImage, command=lambda: connect(root))
+canvas.create_window(330, 20, anchor="nw", window=signInBtn)
+
 title = Label(text="Let the music play !!!", fg="black", bg=root.cget('bg'))
 canvas.create_window(150, 50, anchor="nw", window=title)
 
@@ -22,11 +31,6 @@ mixer.init()
 volume = 0.5
 mixer.music.set_volume(volume)
 
-songs = os.listdir('./songs')
-song_buttons = {}
-
-for index, song in enumerate(songs):
-    song_buttons[index] = Button(root, text=song, command=lambda: newSongWindow(song[index], root))
-    canvas.create_window(20 + (80 * (index + 1)), 300, anchor="nw", window=song_buttons[index])
+burger(root)
 
 mainloop() 
