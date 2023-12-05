@@ -44,13 +44,13 @@ def newSongWindow(song, root):
         upImage = upImage.resize((30, 30))
         upImage = ImageTk.PhotoImage(upImage)
 
-    playBtn = Button(song_window, image=playImage, command=playSong())
+    playBtn = Button(song_window, image=playImage)
     canvas.create_window(20, 350, anchor="nw", window=playBtn)
 
     pauseBtn = Button(song_window, image=pauseImage, command=pauseSong())
     canvas.create_window(120, 350, anchor="nw", window=pauseBtn)
 
-    volumeDownBtn = Button(song_window, image=downImage, command=volumeUp())
+    volumeDownBtn = Button(song_window, image=downImage, command=volumeDown())
     canvas.create_window(220, 350, anchor="nw", window=volumeDownBtn)
 
     volumeUpBtn = Button(song_window, image=upImage, command=volumeUp())
