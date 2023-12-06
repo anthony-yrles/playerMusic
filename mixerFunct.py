@@ -1,14 +1,24 @@
 from pygame import mixer
 from tkinter import *
+from songWindow import *
 
+pause = False
+volume = 0.5
+scaleVolume = volume * 200
 
-def playSong():
-    currentsong = playlist.get(ACTIVE)
-    mixer.music.load(f'./songs/{currentsong}')
+def playSong(song):
+    mixer.music.load(f'./songs/{song}')
     mixer.music.play()
 
 def pauseSong():
-    mixer.music.pause()
+    global pause
+
+    if not pause:
+        mixer.music.pause()
+        pause = True
+    else:
+        mixer.music.unpause()
+        pause = False
 
 def stopSong():
     mixer.music.stop()
@@ -22,6 +32,8 @@ def volumeDown():
     if volume  < 0:
         volume = 0
     mixer.music.set_volume(volume)
+    Canvas.create_rectangle(100, 50, (100 + scaleVolume), 80, fill='red')
+    return(volume)
 
     
 def volumeUp():
@@ -30,8 +42,5 @@ def volumeUp():
     if volume > 1:
         volume = 1
     mixer.music.set_volume(volume)
-
-def songsLoop():
-    currentsong = playlist.get(ACTIVE)
-    mixer.music.load(f'./songs/{currentsong}')
-    mixer.music.play(-1)
+    Canvas.create_rectangle(100, 50, (100 + scaleVolume), 80, fill='red')
+    return(volume)

@@ -55,9 +55,5 @@ def connect(root):
     submitCreation = Button(connect_window, text="Submit", command=lambda :newMemberConnection(nameNewEntry, passwordNewEntry, connect_window, canvas), width=20)
     canvas.create_window(120, 290, anchor="nw", window=submitCreation)
 
-
-# def read(filename):
-#     with open(filename, 'r') as json_file:
-#         json.load(json_file)
         
             

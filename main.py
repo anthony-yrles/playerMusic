@@ -27,10 +27,6 @@ canvas.create_window(330, 20, anchor="nw", window=signInBtn)
 title = Label(text="Let the music play !!!", fg="black", bg=root.cget('bg'))
 canvas.create_window(150, 50, anchor="nw", window=title)
 
-mixer.init()
-volume = 0.5
-mixer.music.set_volume(volume)
-
 burger(root)
 
 mainloop() 
