@@ -1,4 +1,5 @@
 import pygame as Py
+import os
 
 selectedSong = None
 
@@ -13,6 +14,8 @@ def set_selected_song(song):
 def get_selected_song():
 	global selectedSong
 	return selectedSong
+
+songs = os.listdir('./assets/songs') 
 
 rect = Py.Rect(460, 890, 700, 80)
 rectPlayList = Py.Rect(20, 20, 260, 40)

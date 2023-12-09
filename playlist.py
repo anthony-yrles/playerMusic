@@ -1,7 +1,4 @@
 from globals import *
-import os
-
-songs = os.listdir('./assets/songs')  
 
 def generatePlaylist(font, event):
     for index, song in enumerate(songs):

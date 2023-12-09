@@ -1,12 +1,25 @@
 from pygame import mixer as mx
 from globals import *
 from playlist import *
+import random
 
 def recule():
-    print("j'en sais rien pour le moment")
+    selectedSong = get_selected_song()
+    if selectedSong is not None:
+        index = songs.index(selectedSong)
+        if index > 0:
+            selectedSong = songs[index - 1]
+            set_selected_song(selectedSong)
+            print(selectedSong)
+            play()
 
-def random():
-    print("j'en sais rien pour le moment")
+def rand():
+    if songs:
+        selectedSong = random.choice(songs)
+        set_selected_song(selectedSong)
+        print(selectedSong)
+        mx.music.load(f'./assets/songs/{selectedSong}')
+        mx.music.play()
 
 def play():
     mx.music.load(f'./assets/songs/{get_selected_song()}')
@@ -25,10 +38,19 @@ def stopSong():
     mx.music.stop()
 
 def advance():
-    print("j'en sais rien pour le moment")
+    selectedSong = get_selected_song()
+    if selectedSong is not None:
+        index = songs.index(selectedSong)
+        if index < len(songs) - 1:
+            selectedSong = songs[index + 1]
+            set_selected_song(selectedSong)
+            print(selectedSong)
+            play()
 
 def loop():
-    print("j'en sais rien pour le moment")
+    print("loop")
+    while selectedSong is not None:
+        play()
 
 def volumeUp():
     global volume

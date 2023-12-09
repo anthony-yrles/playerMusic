@@ -11,7 +11,7 @@ def randomButton(event):
      if event.type == Py.MOUSEBUTTONDOWN:
             if imageRandomPosition[0] <= event.pos[0] <= imageRandomPosition[0] + imageRandom.get_width() and \
                imageRandomPosition[1] <= event.pos[1] <= imageRandomPosition[1] + imageRandom.get_height():
-                random()
+                rand()
 
 def playButton(event):
    if event.type == Py.MOUSEBUTTONDOWN:
