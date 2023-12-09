@@ -1,32 +1,44 @@
-from pygame import mixer
-from tkinter import *
-from songWindow import *
-from connect import *
-from testNewMember import *
-from burger import *
-from PIL import Image, ImageTk
+# Initialisation pygame
+# Choix des variables et des assets de la fenetre pygame
+# Ouverture de la fenetre
+# Gestion de la fermeture de la page.
+# Créationn des boutons facile (play, pause, stop, volumeup, volume down)
+# Fonction play, pause, stop, volumeup, volumedown
+# Bouton avancé lecture en boucle, aléatoire
+# Fonction playLoop, playRandom
+# Création playlist
+# Fonction selectSong
+# Bouton  + fonction donwload
+# Travail esthetique de la fenetre
+# Création barre de défilement de la musique.
 
-root = Tk()
-root.title('Music player')
+import pygame as Py
+from render import *
+from buttonMusic import *
+from playlist import *
+from globals import *
 
-original_image = Image.open("./images/bcg_image.jpg")
-resized_image = original_image.resize((400, 400))
-original_image = ImageTk.PhotoImage(resized_image)
+Py.init()
 
-canvas = Canvas(root, width=resized_image.width, height=resized_image.height)
-canvas.pack(fill="both", expand=True)
-canvas.create_image(0, 0, anchor="nw", image=original_image)
+continuer = True
+script_folder = os.path.dirname(os.path.abspath("C:\\Users\\Anthony\\OneDrive\\Bureau\\playerMusic\\assets"))
+font_path = os.path.join(script_folder, 'assets', 'font', 'Roboto-Black.ttf')
+font = Py.font.Font(font_path, 18)
 
-signInImage = Image.open("./images/signIn.png")
-ResizedSignIn = signInImage.resize((30, 30))
-signInImage = ImageTk.PhotoImage(ResizedSignIn)
-
-signInBtn = Button(root, image=signInImage, command=lambda: connect(root))
-canvas.create_window(330, 20, anchor="nw", window=signInBtn)
-
-title = Label(text="Let the music play !!!", fg="black", bg=root.cget('bg'))
-canvas.create_window(150, 50, anchor="nw", window=title)
-
-burger(root)
-
-mainloop() 
+while continuer:
+    render(font)
+    for event in Py.event.get():
+        if event.type == Py.QUIT:
+            continuer = False
+        generatePlaylist(font, event)
+        reculeButton(event)
+        randomButton(event)
+        playButton(event)
+        pauseButton(event)
+        stopButton(event)
+        advanceButton(event)
+        loopButton(event)
+        upButton(event)
+        downButton(event)
+        muteButton(event)
+Py.quit()

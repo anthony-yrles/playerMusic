@@ -53,12 +53,10 @@ def newSongWindow(song, root):
     pauseBtn = Button(song_window, image=pauseImage, command=lambda: pauseSong())
     canvas.create_window(120, 350, anchor="nw", window=pauseBtn)
 
-    volumeUpBtn = Button(song_window, image=upImage, command=lambda: volumeUp())
+    volumeUpBtn = Button(song_window, image=upImage, command=lambda: volumeUp(canvas))
     canvas.create_window(315, 45, anchor="nw", window=volumeUpBtn)
 
-    canvas.create_rectangle(100, 50, (100 + scaleVolume), 80, fill='red')
-
-    volumeDownBtn = Button(song_window, image=downImage, command=lambda: volumeDown())
+    volumeDownBtn = Button(song_window, image=downImage, command=lambda: volumeDown(canvas))
     canvas.create_window(50, 45, anchor="nw", window=volumeDownBtn)
 
 
