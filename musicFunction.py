@@ -9,7 +9,7 @@ def random():
     print("j'en sais rien pour le moment")
 
 def play():
-    mx.music.load(f'./assets/songs/{selectedSong}')
+    mx.music.load(f'./assets/songs/{get_selected_song()}')
     mx.music.play()
 
 def pauseFunct():

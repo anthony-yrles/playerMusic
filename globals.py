@@ -6,6 +6,14 @@ screen = Py.display.set_mode((1300, 1000))
 width = 1300
 height = 1000
 
+def set_selected_song(song):
+	global selectedSong
+	selectedSong = song
+
+def get_selected_song():
+	global selectedSong
+	return selectedSong
+
 rect = Py.Rect(460, 890, 700, 80)
 rectPlayList = Py.Rect(20, 20, 260, 40)
 textePlaylist = "Playlist"

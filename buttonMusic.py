@@ -17,6 +17,7 @@ def playButton(event):
    if event.type == Py.MOUSEBUTTONDOWN:
       if imagePlayPosition[0] <= event.pos[0] <= imagePlayPosition[0] + imagePlay.get_width() and \
          imagePlayPosition[1] <= event.pos[1] <= imagePlayPosition[1] + imagePlay.get_height():
+         selectedSong = get_selected_song()
          print(selectedSong)
          if selectedSong is not None:
             play()

@@ -17,6 +17,7 @@ def generatePlaylist(font, event):
         selected = selection(event, rectIndexPosition, rectIndexWidth, rectIndexHeight, song)
         if selected is not None:
             selectedSong = selected
+            set_selected_song(selectedSong)
             print(selectedSong)
 
         if index == len(songs) - 1:
