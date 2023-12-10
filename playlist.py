@@ -6,7 +6,7 @@ def generatePlaylist(font, event):
         rectIndexPosition = (20, 25 + (50 * (index + 1)))
         rectIndexWidth = 260
         rectIndexHeight = 40
-        Py.draw.rect(screen, 'gray', rectIndex)
+        Py.draw.rect(screen, 'gray', rectIndex, 0, 15)
         text_surface = font.render(song, True, (0, 0, 0))
         text_rect = text_surface.get_rect(center=rectIndex.center)
         screen.blit(text_surface, text_rect)
@@ -15,17 +15,11 @@ def generatePlaylist(font, event):
         if selected is not None:
             selectedSong = selected
             set_selected_song(selectedSong)
-            print(selectedSong)
-
-        if index == len(songs) - 1:
-            text_surface = font.render(song, True, (0, 0, 0))
+            Py.draw.rect(screen, 'red', rectIndex)
+            text_surface = font.render(song, True, 'white')
             text_rect = text_surface.get_rect(center=rectIndex.center)
             screen.blit(text_surface, text_rect)
-            rectDownload = Py.Rect(20, 25 + (50 * (index + 2)), 260, 40)
-            Py.draw.rect(screen, 'gray', rectDownload)
-            text_surface = font.render("Download", True, (0, 0, 0))
-            text_rect = text_surface.get_rect(center=rectDownload.center)
-            screen.blit(text_surface, text_rect)
+            print(selectedSong)
 
 def selection(event, rectIndexPosition, rectIndexWidth, rectIndexHeight, song):
     if event.type == Py.MOUSEBUTTONUP:

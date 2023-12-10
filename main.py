@@ -14,7 +14,7 @@
 
 import pygame as Py
 from render import *
-from buttonMusic import *
+from button import *
 from playlist import *
 from globals import *
 
@@ -33,7 +33,7 @@ while continuer:
         generatePlaylist(font, event)
         reculeButton(event)
         randomButton(event)
-        playButton(event)
+        playButton(event, font)
         pauseButton(event)
         stopButton(event)
         advanceButton(event)
@@ -41,4 +41,6 @@ while continuer:
         upButton(event)
         downButton(event)
         muteButton(event)
+        downloadButton(event, font)
+        trashButton(event, font)
 Py.quit()

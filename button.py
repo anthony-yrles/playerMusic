@@ -1,4 +1,4 @@
-from musicFunction import *
+from buttonFunction import *
 from globals import *
 
 def reculeButton(event):
@@ -13,14 +13,13 @@ def randomButton(event):
                imageRandomPosition[1] <= event.pos[1] <= imageRandomPosition[1] + imageRandom.get_height():
                 rand()
 
-def playButton(event):
+def playButton(event, font):
    if event.type == Py.MOUSEBUTTONDOWN:
       if imagePlayPosition[0] <= event.pos[0] <= imagePlayPosition[0] + imagePlay.get_width() and \
          imagePlayPosition[1] <= event.pos[1] <= imagePlayPosition[1] + imagePlay.get_height():
          selectedSong = get_selected_song()
-         print(selectedSong)
          if selectedSong is not None:
-            play()
+            play(font)
                
 
 def pauseButton(event):
@@ -64,3 +63,15 @@ def muteButton(event):
             if imageMutePosition[0] <= event.pos[0] <= imageMutePosition[0] + imageMute.get_width() and \
                imageMutePosition[1] <= event.pos[1] <= imageMutePosition[1] + imageMute.get_height():
                 mute()
+
+def downloadButton(event, font):
+    if event.type == Py.MOUSEBUTTONDOWN:
+            if imageDownloadPosition[0] <= event.pos[0] <= imageDownloadPosition[0] + imageDownload.get_width() and \
+               imageDownloadPosition[1] <= event.pos[1] <= imageDownloadPosition[1] + imageDownload.get_height():
+                downloads(font, event)
+
+def trashButton(event, font):
+     if event.type == Py.MOUSEBUTTONDOWN:
+            if imageTrashPosition[0] <= event.pos[0] <= imageTrashPosition[0] + imageTrash.get_width() and \
+               imageTrashPosition[1] <= event.pos[1] <= imageTrashPosition[1] + imageTrash.get_height():
+                trash(font, event)
