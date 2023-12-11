@@ -19,7 +19,7 @@ def playButton(event, font):
          imagePlayPosition[1] <= event.pos[1] <= imagePlayPosition[1] + imagePlay.get_height():
          selectedSong = get_selected_song()
          if selectedSong is not None:
-            play(font)
+            play()
                
 
 def pauseButton(event):
@@ -40,11 +40,11 @@ def advanceButton(event):
                imageAdvancePosition[1] <= event.pos[1] <= imageAdvancePosition[1] + imageAdvance.get_height():
                 advance()
 
-def loopButton(event):
+def loopButton(event, songSecond):
     if event.type == Py.MOUSEBUTTONDOWN:
             if imageLoopPosition[0] <= event.pos[0] <= imageLoopPosition[0] + imageLoop.get_width() and \
                imageLoopPosition[1] <= event.pos[1] <= imageLoopPosition[1] + imageLoop.get_height():
-                loop()
+                loop(songSecond)
 
 def upButton(event):
     if event.type == Py.MOUSEBUTTONDOWN:

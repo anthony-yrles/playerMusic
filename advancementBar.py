@@ -3,9 +3,10 @@ from globals import *
 
 def songDataSecond():
     selectedSong = get_selected_song()
-    songMetadata = MP3(f'./assets/songs/{selectedSong}')
-    songSecond = songMetadata.info.length
-    return(songSecond)
+    if selectedSong is not None:
+        songMetadata = MP3(f'./assets/songs/{selectedSong}')
+        songSecond = songMetadata.info.length
+        return(songSecond)
 
 def songBar(font):
     print("test")

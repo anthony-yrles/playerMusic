@@ -25,12 +25,13 @@ def rand():
         mx.music.load(f'./assets/songs/{selectedSong}')
         mx.music.play()
 
-def play(font):
+# def play(font):
+def play():
     selectedSong = get_selected_song()
     if selectedSong is not None:
         mx.music.load(f'./assets/songs/{selectedSong}')
         mx.music.play()
-        songBar(font)
+        # songBar(font)
     else:
         mb.showerror("Erreur", "Veuillez sélectionner un fichier son avant")
 
@@ -62,28 +63,36 @@ def advance():
     else:
         mb.showerror("Erreur", "Veuillez sélectionner un fichier son avant")
 
-def loop():
-    print("loop")
+import time
+
+def loop(songSecond):
+    selectedSong = get_selected_song()
     while selectedSong is not None:
         play()
+        time.sleep(songSecond)  # Attendez 1 seconde avant de vérifier à nouveau la chanson sélectionnée
+        selectedSong = get_selected_song()
+
 
 def volumeUp():
-    global volume
-    volume = volume + 0.1
-    if volume > 1:
-        volume = 1
-    mx.music.set_volume(volume)
+    volume_new = get_selected_volume() + 0.1
+    if volume_new > 1:
+        volume_new = 1
+    set_selected_volume(volume_new)
+    Py.draw.rect(screen, rectColor, rectSound, 0, 15)
+    mx.music.set_volume(get_selected_volume())
 
 def volumeDown():
-    global volume
-    volume = volume - 0.1
-    if volume  < 0:
-        volume = 0
-    mx.music.set_volume(volume)
+    volume_new = get_selected_volume() - 0.1
+    if volume_new  < 0:
+        volume_new = 0
+    set_selected_volume(volume_new)
+    Py.draw.rect(screen, rectColor, rectSound, 0, 15)
+    mx.music.set_volume(get_selected_volume())
 
 def mute():
-    volume = 0
-    mx.music.set_volume(volume)
+    volume_new = 0
+    set_selected_volume(volume_new)
+    mx.music.set_volume(get_selected_volume())
 
 def downloads(font, event):
     file = fd.askopenfile()

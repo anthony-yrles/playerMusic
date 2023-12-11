@@ -21,8 +21,6 @@ from globals import *
 Py.init()
 
 continuer = True
-# script_folder = os.path.dirname(os.path.abspath("C:\\Users\\Anthony\\OneDrive\\Bureau\\playerMusic\\assets"))
-# font_path = os.path.join(script_folder, 'assets', 'font', 'Roboto-Black.ttf')
 font = Py.font.Font("./assets/font/Roboto-Black.ttf", 18)
 
 while continuer:
@@ -31,13 +29,14 @@ while continuer:
         if event.type == Py.QUIT:
             continuer = False
         generatePlaylist(font, event)
+        songSecond = songDataSecond()
         reculeButton(event)
         randomButton(event)
         playButton(event, font)
         pauseButton(event)
         stopButton(event)
         advanceButton(event)
-        loopButton(event)
+        loopButton(event, songSecond)
         upButton(event)
         downButton(event)
         muteButton(event)

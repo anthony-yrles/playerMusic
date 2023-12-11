@@ -20,7 +20,7 @@ songs = os.listdir('./assets/songs')
 rect = Py.Rect(220, 510, 560, 60)
 rectPlayList = Py.Rect(20, 20, 160, 35)
 textePlaylist = "Playlist"
-rectSound = Py.Rect (730, 100, 40, 280)
+# rectSound = Py.Rect (730, 100, 40, 280)
 rectSongBar = Py.Rect(240, 470, 470, 20)
 
 image = Py.image.load('./assets/images/bcg_image.jpg').convert_alpha()
@@ -64,6 +64,14 @@ imageTrashPosition = (220, 100)
 pause = False
 volume = 0.5
 
-# rectSound = Py.Rect(1220, 80 + 520 * volume, 20, 520 * volume)
-# rectColor = (127.5 - 255 * volume ,127.5 + 255 * volume,0)
+def set_selected_volume(volume_new):
+	global volume
+	volume = volume_new
+
+def get_selected_volume():
+	global volume
+	return volume
+
+rectSound = Py.Rect(720, 80 + 300 * get_selected_volume(), 20, 300 * get_selected_volume())
+rectColor = (127.5 - 255 * get_selected_volume() ,127.5 + 255 * get_selected_volume(),0)
 

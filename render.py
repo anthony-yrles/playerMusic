@@ -23,8 +23,6 @@ def render(font):
     screen.blit(imageMute, imageMutePosition)
     screen.blit(imageDownload, imageDownloadPosition)
     screen.blit(imageTrash, imageTrashPosition)
-
-    Py.draw.rect(screen, 'gray', rectSound, 0, 15)
-    Py.draw.rect(screen, 'gray', rectSongBar, 0, 15)
+    # Py.draw.rect(screen, rectColor, rectSound, 0, 15)
 
     Py.display.flip()
