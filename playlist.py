@@ -2,7 +2,7 @@ from globals import *
 
 def generatePlaylist(font, event):
     for index, song in enumerate(songs):
-        rectIndex = Py.Rect(20, 25 + (50 * (index + 1)), 260, 40)
+        rectIndex = Py.Rect(20, 25 + (50 * (index + 1)), 160, 40)
         rectIndexPosition = (20, 25 + (50 * (index + 1)))
         rectIndexWidth = 260
         rectIndexHeight = 40

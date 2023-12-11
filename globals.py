@@ -3,9 +3,9 @@ import os
 
 selectedSong = None
 
-screen = Py.display.set_mode((1300, 1000))
-width = 1300
-height = 1000
+screen = Py.display.set_mode((800, 600))
+width = 800
+height = 600
 
 def set_selected_song(song):
 	global selectedSong
@@ -17,49 +17,49 @@ def get_selected_song():
 
 songs = os.listdir('./assets/songs') 
 
-rect = Py.Rect(460, 890, 700, 80)
-rectPlayList = Py.Rect(20, 20, 260, 40)
+rect = Py.Rect(220, 510, 560, 60)
+rectPlayList = Py.Rect(20, 20, 160, 35)
 textePlaylist = "Playlist"
-rectSound = Py.Rect (1220, 130, 20, 500)
-rectSongBar = Py.Rect(480, 800, 660, 20)
+rectSound = Py.Rect (730, 100, 40, 280)
+rectSongBar = Py.Rect(240, 470, 470, 20)
 
 image = Py.image.load('./assets/images/bcg_image.jpg').convert_alpha()
 
 imageRecule = Py.image.load('./assets/images/recule.png').convert_alpha()
-imageReculePosition = (480, 900)
+imageReculePosition = (240, 520)
 
 imageRandom = Py.image.load('./assets/images/random.png').convert_alpha()
-imageRandomPosition = (580, 900)
+imageRandomPosition = (320, 520)
 
 imagePlay = Py.image.load('./assets/images/play.png').convert_alpha()
-imagePlayPosition = (680, 900)
+imagePlayPosition = (400, 520)
 
 imagePause = Py.image.load('./assets/images/pause.png').convert_alpha()
-imagePausePosition = (780, 900)
+imagePausePosition = (480, 520)
 
 imageStop = Py.image.load('./assets/images/stop.png').convert_alpha()
-imageStopPosition = (880, 900)
-
-imageAdvance = Py.image.load('./assets/images/advance.png').convert_alpha()
-imageAdvancePosition = (980, 900)
+imageStopPosition = (560, 520)
 
 imageLoop = Py.image.load('./assets/images/loop.png').convert_alpha()
-imageLoopPosition = (1080, 900)
+imageLoopPosition = (640, 520)
+
+imageAdvance = Py.image.load('./assets/images/advance.png').convert_alpha()
+imageAdvancePosition = (720, 520)
 
 imageUp = Py.image.load('./assets/images/up.png').convert_alpha()
-imageUpPosition = (1200, 50)
+imageUpPosition = (730, 50)
 
 imageDown = Py.image.load('./assets/images/down.png').convert_alpha()
-imageDownPosition = (1200, 650)
+imageDownPosition = (730, 400)
 
 imageMute = Py.image.load('./assets/images/mute.png').convert_alpha()
-imageMutePosition = (1200, 750)
+imageMutePosition = (730, 450)
 
 imageDownload = Py.image.load('./assets/images/download.png')
-imageDownloadPosition = (350, 50)
+imageDownloadPosition = (220, 50)
 
 imageTrash = Py.image.load('./assets/images/trash.png')
-imageTrashPosition = (350, 150)
+imageTrashPosition = (220, 100)
 
 pause = False
 volume = 0.5

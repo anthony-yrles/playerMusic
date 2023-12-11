@@ -3,7 +3,7 @@ from playlist import *
 from buttonFunction import *
 
 def render(font):
-    screen.blit(image, (300,0))
+    screen.blit(image, (200,0))
 
     Py.draw.rect(screen, 'gray', rectPlayList, 0, 15)
     text_surface = font.render(textePlaylist, True, (0, 0, 0))
@@ -24,7 +24,7 @@ def render(font):
     screen.blit(imageDownload, imageDownloadPosition)
     screen.blit(imageTrash, imageTrashPosition)
 
-    Py.draw.rect(screen, 'gray', rectSongBar, 0, 15)
     Py.draw.rect(screen, 'gray', rectSound, 0, 15)
+    Py.draw.rect(screen, 'gray', rectSongBar, 0, 15)
 
     Py.display.flip()

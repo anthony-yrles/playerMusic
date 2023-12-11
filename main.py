@@ -21,9 +21,9 @@ from globals import *
 Py.init()
 
 continuer = True
-script_folder = os.path.dirname(os.path.abspath("C:\\Users\\Anthony\\OneDrive\\Bureau\\playerMusic\\assets"))
-font_path = os.path.join(script_folder, 'assets', 'font', 'Roboto-Black.ttf')
-font = Py.font.Font(font_path, 18)
+# script_folder = os.path.dirname(os.path.abspath("C:\\Users\\Anthony\\OneDrive\\Bureau\\playerMusic\\assets"))
+# font_path = os.path.join(script_folder, 'assets', 'font', 'Roboto-Black.ttf')
+font = Py.font.Font("./assets/font/Roboto-Black.ttf", 18)
 
 while continuer:
     render(font)
