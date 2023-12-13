@@ -1,5 +1,6 @@
 from mutagen.mp3 import MP3
 from globals import *
+import time
 
 def songDataSecond():
     selectedSong = get_selected_song()
@@ -7,11 +8,17 @@ def songDataSecond():
         songMetadata = MP3(f'./assets/songs/{selectedSong}')
         songSecond = songMetadata.info.length
         return(songSecond)
-
-def songBar(font):
-    print("test")
-    roundBar = Py.Rect(480, 800, 20, 20)
-    Py.draw.rect(screen, 'red', roundBar)
-    text_surface = font.render("", True, 'white')
-    text_rect = text_surface.get_rect(center=roundBar.center)
-    screen.blit(text_surface, text_rect)
+    
+def render_circle():
+    global start_time
+    songSecond = songDataSecond()
+    newSongPlay = get_selected_play
+    if songSecond is not None and newSongPlay is True:
+        print("on y est")
+        pos_x_min = 250
+        pos_x_max = 700
+        width_bar = pos_x_max - pos_x_min
+        speed_movement = width_bar / songSecond
+        elapsed_time = time.time() - start_time
+        actual_x_pos = pos_x_min + speed_movement * elapsed_time
+        return actual_x_pos

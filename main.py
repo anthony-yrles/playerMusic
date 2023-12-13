@@ -32,7 +32,7 @@ while continuer:
         songSecond = songDataSecond()
         reculeButton(event)
         randomButton(event)
-        playButton(event, font)
+        playButton(event)
         pauseButton(event)
         stopButton(event)
         advanceButton(event)
@@ -42,4 +42,6 @@ while continuer:
         muteButton(event)
         downloadButton(event, font)
         trashButton(event, font)
+        if songPlay == True:
+            songBar()
 Py.quit()

@@ -13,7 +13,7 @@ def randomButton(event):
                imageRandomPosition[1] <= event.pos[1] <= imageRandomPosition[1] + imageRandom.get_height():
                 rand()
 
-def playButton(event, font):
+def playButton(event):
    if event.type == Py.MOUSEBUTTONDOWN:
       if imagePlayPosition[0] <= event.pos[0] <= imagePlayPosition[0] + imagePlay.get_width() and \
          imagePlayPosition[1] <= event.pos[1] <= imagePlayPosition[1] + imagePlay.get_height():

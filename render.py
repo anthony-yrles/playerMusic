@@ -23,6 +23,15 @@ def render(font):
     screen.blit(imageMute, imageMutePosition)
     screen.blit(imageDownload, imageDownloadPosition)
     screen.blit(imageTrash, imageTrashPosition)
-    # Py.draw.rect(screen, rectColor, rectSound, 0, 15)
+    Py.draw.rect(screen, get_selected_color(), get_selected_rect(), 0, 15)
+    Py.draw.rect(screen, 'red', roundBar, 0, 15)
 
+    actual_x_pos = render_circle()
+    if actual_x_pos is None:
+        Py.draw.circle(screen, 'black', (250, 480), 10)
+    elif actual_x_pos >= 700:
+        Py.draw.circle(screen, 'black', (700, 480), 10)
+    else:
+        Py.draw.circle(screen, 'black', (actual_x_pos, 480), 10)
+    
     Py.display.flip()

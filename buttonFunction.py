@@ -25,13 +25,14 @@ def rand():
         mx.music.load(f'./assets/songs/{selectedSong}')
         mx.music.play()
 
-# def play(font):
 def play():
     selectedSong = get_selected_song()
+    newSongPlay = get_selected_play()
     if selectedSong is not None:
         mx.music.load(f'./assets/songs/{selectedSong}')
         mx.music.play()
-        # songBar(font)
+        newSongPlay = True
+        set_selected_play(newSongPlay)
     else:
         mb.showerror("Erreur", "Veuillez sélectionner un fichier son avant")
 

@@ -1,5 +1,6 @@
 import pygame as Py
 import os
+import time
 
 selectedSong = None
 
@@ -19,9 +20,8 @@ songs = os.listdir('./assets/songs')
 
 rect = Py.Rect(220, 510, 560, 60)
 rectPlayList = Py.Rect(20, 20, 160, 35)
+roundBar = Py.Rect(240, 470, 470, 20)
 textePlaylist = "Playlist"
-# rectSound = Py.Rect (730, 100, 40, 280)
-rectSongBar = Py.Rect(240, 470, 470, 20)
 
 image = Py.image.load('./assets/images/bcg_image.jpg').convert_alpha()
 
@@ -67,11 +67,41 @@ volume = 0.5
 def set_selected_volume(volume_new):
 	global volume
 	volume = volume_new
+	set_selected_rect(volume_new)
+	set_selected_color()
 
 def get_selected_volume():
 	global volume
 	return volume
 
-rectSound = Py.Rect(720, 80 + 300 * get_selected_volume(), 20, 300 * get_selected_volume())
-rectColor = (127.5 - 255 * get_selected_volume() ,127.5 + 255 * get_selected_volume(),0)
+rectSound = Py.Rect(735, 395 - 300 * get_selected_volume(), 20, 300 * get_selected_volume())
+rectColor = (0 + 255 * get_selected_volume(), 255 - 255 * get_selected_volume(), 0)
 
+def set_selected_rect(volume_new):
+	global rectSound
+	rectSound = Py.Rect(735, 395 - 300 * get_selected_volume(), 20, 300 * volume_new)
+
+def get_selected_rect():
+	global rectSound
+	return rectSound
+
+def set_selected_color():
+	global rectColor
+	rectColor = (255 - 255 * get_selected_volume() ,0 + 255 * get_selected_volume(),0)
+
+def get_selected_color():
+	global rectColor
+	return rectColor
+
+songPlay = False
+
+def set_selected_play(newSongPlay):
+	global songPlay
+	if newSongPlay == True:
+		songPlay = newSongPlay
+
+def get_selected_play():
+	global songPlay
+	return songPlay
+
+start_time = time.time()
