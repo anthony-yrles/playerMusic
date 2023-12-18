@@ -12,9 +12,8 @@ def songDataSecond():
 def render_circle():
     global start_time
     songSecond = songDataSecond()
-    newSongPlay = get_selected_play
-    if songSecond is not None and newSongPlay is True:
-        print("on y est")
+    song_running = get_song_running()
+    if songSecond is not None and song_running == True:
         pos_x_min = 250
         pos_x_max = 700
         width_bar = pos_x_max - pos_x_min

@@ -27,12 +27,10 @@ def rand():
 
 def play():
     selectedSong = get_selected_song()
-    newSongPlay = get_selected_play()
     if selectedSong is not None:
         mx.music.load(f'./assets/songs/{selectedSong}')
         mx.music.play()
-        newSongPlay = True
-        set_selected_play(newSongPlay)
+        set_song_running(True)
     else:
         mb.showerror("Erreur", "Veuillez sélectionner un fichier son avant")
 
@@ -64,15 +62,11 @@ def advance():
     else:
         mb.showerror("Erreur", "Veuillez sélectionner un fichier son avant")
 
-import time
-
-def loop(songSecond):
+def loop():
     selectedSong = get_selected_song()
-    while selectedSong is not None:
-        play()
-        time.sleep(songSecond)  # Attendez 1 seconde avant de vérifier à nouveau la chanson sélectionnée
-        selectedSong = get_selected_song()
-
+    if selectedSong is not None:
+        mx.music.load(f'./assets/songs/{selectedSong}')
+        mx.music.play(-1)
 
 def volumeUp():
     volume_new = get_selected_volume() + 0.1
@@ -96,17 +90,22 @@ def mute():
     mx.music.set_volume(get_selected_volume())
 
 def downloads(font, event):
+    if len(songs) >= 10:
+        mb.showinfo("Information", "Vous avez déjà atteint le nombre maximum de chansons (10).")
+        return
+
     file = fd.askopenfile()
-    audio_extensions = ['.mp3', '.wav', '.ogg']
-    filename = os.path.basename(file.name)
-    _, extension = os.path.splitext(filename)
-    if extension.lower() in audio_extensions:
-        if filename not in songs:
-            songs.append(filename)
-            generatePlaylist(font, event)
-    else:
-        mb.showerror("Erreur", "Le fichier sélectionné n'est pas un fichier son valide.")
-    file.close()
+    if file:
+        audio_extensions = ['.mp3', '.wav', '.ogg']
+        filename = os.path.basename(file.name)
+        _, extension = os.path.splitext(filename)
+        if extension.lower() in audio_extensions:
+            if filename not in songs:
+                songs.append(filename)
+                generatePlaylist(font, event)
+        else:
+            mb.showerror("Erreur", "Le fichier sélectionné n'est pas un fichier son valide.")
+        file.close()
 
 def trash(font, event):
     selectedSong = get_selected_song()

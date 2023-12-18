@@ -93,15 +93,14 @@ def get_selected_color():
 	global rectColor
 	return rectColor
 
-songPlay = False
+song_running = False
 
-def set_selected_play(newSongPlay):
-	global songPlay
-	if newSongPlay == True:
-		songPlay = newSongPlay
+def get_song_running():
+    global song_running
+    return song_running
 
-def get_selected_play():
-	global songPlay
-	return songPlay
+def set_song_running(value):
+    global song_running
+    song_running = value
 
 start_time = time.time()

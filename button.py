@@ -40,11 +40,11 @@ def advanceButton(event):
                imageAdvancePosition[1] <= event.pos[1] <= imageAdvancePosition[1] + imageAdvance.get_height():
                 advance()
 
-def loopButton(event, songSecond):
+def loopButton(event):
     if event.type == Py.MOUSEBUTTONDOWN:
             if imageLoopPosition[0] <= event.pos[0] <= imageLoopPosition[0] + imageLoop.get_width() and \
                imageLoopPosition[1] <= event.pos[1] <= imageLoopPosition[1] + imageLoop.get_height():
-                loop(songSecond)
+                loop()
 
 def upButton(event):
     if event.type == Py.MOUSEBUTTONDOWN:
